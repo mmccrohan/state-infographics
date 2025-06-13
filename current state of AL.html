@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infographic: Accelerating Mississippi's NG911 Transition</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Chosen Palette: Brilliant Blues -->
+    <!-- Application Structure Plan: The infographic follows a persuasive narrative flow designed for a busy executive. It starts with a strong hook establishing the core problem (The NG911 Mandate vs. Reality). It then diagnoses the key pain points (Dispatcher Crisis, Data Gaps, Infrastructure Fragility) in a visually engaging format. This is followed by a clear depiction of the solution—the RapidSOS Intelligent Data Layer—using a simple process flow. To substantiate the claims, a "Data-Driven Impact" section provides key statistics via charts. Finally, the "Key Stakeholders" section organizes the decision-makers into a clear table, leading to a call to action. This structure logically moves the viewer from problem to solution to impact, making a complex report digestible and compelling. -->
+    <!-- Visualization & Content Choices: 
+        1. Data Point: MS 911 Pain Points (Dispatcher Crisis, Data Gaps, etc.). Goal: Inform/Compare. Viz/Method: Three-column layout with icons (Unicode) and text blocks (HTML/Tailwind). Justification: Breaks down complex issues into scannable, visually distinct sections, avoiding a wall of text.
+        2. Data Point: RapidSOS as a data layer. Goal: Organize/Explain Process. Viz/Method: Horizontal flowchart using styled divs and arrows (HTML/Tailwind). Justification: Simplifies the technical concept of how the platform works, showing inputs, processing, and outputs in a clear, linear fashion.
+        3. Data Point: Wireless vs. Wireline Call Volume. Goal: Compare. Viz/Method: Chart.js Donut Chart. Justification: Instantly communicates the overwhelming dominance of wireless calls, which is the source of the data context problem.
+        4. Data Point: Survival Rate vs. Time. Goal: Show Change. Viz/Method: Chart.js Line Chart. Justification: Powerfully visualizes the urgency and life-or-death impact of every minute saved in an emergency response.
+        5. Data Point: Key Stakeholders List. Goal: Organize. Viz/Method: Styled HTML Table. Justification: Presents a large amount of structured data (names, titles, roles) in the most readable and professional format.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 450px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 350px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+                max-height: 400px;
+            }
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <div class="container mx-auto px-4 md:px-8 py-12">
+
+        <header class="text-center mb-16">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-[#0B2D59] tracking-tight">A State at a Crossroads</h1>
+            <p class="mt-4 max-w-3xl mx-auto text-lg text-gray-600">Mississippi has a legislative mandate to adopt Next Generation 9-1-1 by 2030, but faces deep-seated challenges in funding, staffing, and technology. This is the path to bridge the gap.</p>
+        </header>
+
+        <section class="mb-20">
+            <div class="grid md:grid-cols-2 gap-8 items-center text-center">
+                <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+                    <p class="text-2xl font-semibold text-gray-600">Annual Wireless 911 Calls</p>
+                    <p class="text-7xl font-extrabold text-[#1E67D6] my-2">1.7 Million</p>
+                    <p class="text-gray-500">Each call represents a critical data gap, forcing dispatchers to respond with incomplete information.</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+                    <p class="text-2xl font-semibold text-gray-600">Survival Rate Decrease</p>
+                    <p class="text-7xl font-extrabold text-[#1E67D6] my-2">7-10<span class="text-5xl">%</span></p>
+                    <p class="text-gray-500">For every minute of delay in a critical emergency, the chance of survival drops significantly.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-20">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-[#0B2D59]">Diagnosing Mississippi's Core Challenges</h2>
+                <p class="mt-3 max-w-2xl mx-auto text-md text-gray-600">The state's 911 system is strained by interconnected issues that technology must address.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8 text-center">
+                <div class="bg-white p-8 rounded-xl shadow-md border border-gray-200">
+                    <div class="text-5xl mb-4">👤</div>
+                    <h3 class="text-xl font-bold text-[#0B2D59] mb-2">The Dispatcher Crisis</h3>
+                    <p class="text-gray-600">Chronically understaffed centers, fueled by low pay and high stress, lead to burnout and increase the risk of operational errors. Outdated tools amplify cognitive load on every call.</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+                     <div class="text-5xl mb-4">🌐</div>
+                    <h3 class="text-xl font-bold text-[#0B2D59] mb-2">The Language & Data Barrier</h3>
+                    <p class="text-gray-600">Currently, a non-English call requires a slow, costly connection to a third-party interpreter, adding minutes of delay. AI provides instant two-way translation and live transcription, spotting keywords like "fire" or "not breathing" to give dispatchers immediate, critical insight.</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-md border border-gray-200">
+                    <div class="text-5xl mb-4">🌪️</div>
+                    <h3 class="text-xl font-bold text-[#0B2D59] mb-2">Infrastructure Fragility</h3>
+                    <p class="text-gray-600">Frequent natural disasters overwhelm isolated 911 centers. The aging infrastructure lacks the resilience and interoperability to share call loads or data between jurisdictions during a crisis.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-20 bg-white p-8 md:p-12 rounded-xl shadow-lg border border-gray-200">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-[#0B2D59]">The Solution: An Intelligent Data Layer</h2>
+                <p class="mt-3 max-w-2xl mx-auto text-md text-gray-600">RapidSOS acts as a smart bridge, enriching existing systems with life-saving data without a costly "rip and replace."</p>
+            </div>
+            <div class="flex flex-col md:flex-row items-center justify-around space-y-8 md:space-y-0 text-center">
+                <div class="w-full md:w-1/4">
+                    <h4 class="text-lg font-bold text-[#0B2D59]">DATA SOURCES</h4>
+                    <p class="text-sm text-gray-600">Connected Cars, Security Systems, AI Call Translation & Transcription</p>
+                </div>
+                <div class="text-4xl font-bold text-[#1E67D6] transform md:rotate-0 rotate-90">&rarr;</div>
+                <div class="w-full md:w-1/3 p-6 bg-[#E3F2FF] rounded-lg border-2 border-[#1E67D6]">
+                    <h4 class="text-lg font-bold text-[#0B2D59]">RapidSOS PLATFORM</h4>
+                    <p class="text-sm text-gray-600">Verifies, processes, and structures data in the cloud</p>
+                </div>
+                <div class="text-4xl font-bold text-[#1E67D6] transform md:rotate-0 rotate-90">&rarr;</div>
+                <div class="w-full md:w-1/4">
+                    <h4 class="text-lg font-bold text-[#0B2D59]">PSAP & FIELD RESPONDERS</h4>
+                    <p class="text-sm text-gray-600">Delivers actionable intelligence to existing screens and devices</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="mb-20">
+             <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-[#0B2D59]">Data-Driven Impact</h2>
+                <p class="mt-3 max-w-2xl mx-auto text-md text-gray-600">Visualizing the scale of the challenge and the urgency for a solution.</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8 md:gap-16">
+                <div class="bg-white p-8 rounded-xl shadow-md border border-gray-200">
+                    <h3 class="text-xl font-bold text-[#0B2D59] text-center mb-6">911 Call Volume by Source (2023)</h3>
+                    <div class="chart-container">
+                        <canvas id="callVolumeChart"></canvas>
+                    </div>
+                     <p class="text-center text-sm text-gray-600 mt-4">Over 90% of calls come from wireless devices, yet provide no context beyond voice, forcing dispatchers to gather information manually under pressure.</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-md border border-gray-200">
+                    <h3 class="text-xl font-bold text-[#0B2D59] text-center mb-6">The "Golden Hour": Every Second Counts</h3>
+                    <div class="chart-container">
+                        <canvas id="survivalRateChart"></canvas>
+                    </div>
+                     <p class="text-center text-sm text-gray-600 mt-4">For critical emergencies like cardiac arrest, the chance of survival plummets with each passing minute. Faster data leads to faster dispatch and more lives saved.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-[#0B2D59]">Key Stakeholders & Decision-Makers</h2>
+                <p class="mt-3 max-w-2xl mx-auto text-md text-gray-600">Engaging these leaders is crucial for driving statewide modernization and ensuring a safer future for Mississippi.</p>
+            </div>
+            <div class="bg-white p-2 md:p-4 rounded-xl shadow-lg border border-gray-200 overflow-x-auto">
+                <table class="w-full text-left text-sm">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="p-4 font-semibold text-[#0B2D59]">Name</th>
+                            <th class="p-4 font-semibold text-[#0B2D59]">Title</th>
+                            <th class="p-4 font-semibold text-[#0B2D59]">Organization</th>
+                            <th class="p-4 font-semibold text-[#0B2D59]">Role</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y">
+                        <tr class="bg-blue-50"><td colspan="4" class="p-2 font-bold text-blue-800">State-Level Economic & Strategic Buyers</td></tr>
+                        <tr>
+                            <td class="p-4">Stephen C. McCraney</td>
+                            <td class="p-4">Executive Director</td>
+                            <td class="p-4">MEMA</td>
+                            <td class="p-4">Economic/Strategic Buyer</td>
+                        </tr>
+                         <tr>
+                            <td class="p-4">Sean Tindell</td>
+                            <td class="p-4">Commissioner</td>
+                            <td class="p-4">MS Dept. of Public Safety</td>
+                            <td class="p-4">Strategic Buyer</td>
+                        </tr>
+                         <tr>
+                            <td class="p-4">Director (TBD)</td>
+                            <td class="p-4">Director</td>
+                            <td class="p-4">MECA (New Authority)</td>
+                            <td class="p-4">Economic/Strategic Buyer</td>
+                        </tr>
+                        <tr class="bg-green-50"><td colspan="4" class="p-2 font-bold text-green-800">Statewide Technical Influencers & Champions</td></tr>
+                         <tr>
+                            <td class="p-4">Robert G. Bailey Jr.</td>
+                            <td class="p-4">MS NENA Representative</td>
+                            <td class="p-4">BETST / NENA</td>
+                            <td class="p-4">Technical Influencer</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4">Sheri Hokamp</td>
+                            <td class="p-4">MS APCO Representative</td>
+                            <td class="p-4">BETST / APCO</td>
+                            <td class="p-4">Technical Influencer</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4">Kristen Campanella</td>
+                            <td class="p-4">President</td>
+                            <td class="p-4">MS 911 Coordinators Assoc.</td>
+                            <td class="p-4">Champion</td>
+                        </tr>
+                         <tr class="bg-yellow-50"><td colspan="4" class="p-2 font-bold text-yellow-800">Priority County-Level Leaders</td></tr>
+                         <tr>
+                            <td class="p-4">Joey Perkins</td>
+                            <td class="p-4">Director</td>
+                            <td class="p-4">Hinds County EMA</td>
+                            <td class="p-4">Champion/Economic Buyer</td>
+                        </tr>
+                          <tr>
+                            <td class="p-4">Matt Stratton</td>
+                            <td class="p-4">Director</td>
+                            <td class="p-4">Harrison County EMA</td>
+                            <td class="p-4">Champion/Economic Buyer</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const brilliantBlues = {
+                primary: '#1E67D6',
+                secondary: '#0B2D59',
+                accent: '#83B9FF',
+                lightBg: '#E3F2FF',
+                neutral: '#6B7280'
+            };
+
+            const wrapLabel = (str, maxWidth) => {
+                if (str.length <= maxWidth) {
+                    return str;
+                }
+                const words = str.split(' ');
+                const lines = [];
+                let currentLine = '';
+                words.forEach(word => {
+                    if ((currentLine + ' ' + word).length > maxWidth) {
+                        lines.push(currentLine);
+                        currentLine = word;
+                    } else {
+                        currentLine = (currentLine === '') ? word : currentLine + ' ' + word;
+                    }
+                });
+                lines.push(currentLine);
+                return lines;
+            };
+
+            const tooltipTitleCallback = (tooltipItems) => {
+                const item = tooltipItems[0];
+                let label = item.chart.data.labels[item.dataIndex];
+                if (Array.isArray(label)) {
+                    return label.join(' ');
+                }
+                return label;
+            };
+
+            const createCallVolumeChart = () => {
+                const ctx = document.getElementById('callVolumeChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Wireless Calls (1.7M)', 'Wireline Calls (196k)'],
+                        datasets: [{
+                            data: [1700000, 196000],
+                            backgroundColor: [brilliantBlues.primary, brilliantBlues.accent],
+                            borderColor: '#ffffff',
+                            borderWidth: 4,
+                            hoverOffset: 4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        cutout: '70%',
+                        plugins: {
+                            legend: {
+                                position: 'bottom',
+                                labels: {
+                                    padding: 20,
+                                    boxWidth: 15,
+                                    font: { size: 14 }
+                                }
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    title: tooltipTitleCallback,
+                                    label: (context) => {
+                                        let value = context.parsed;
+                                        return `${new Intl.NumberFormat('en-US').format(value)} calls`;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            };
+
+            const createSurvivalRateChart = () => {
+                const ctx = document.getElementById('survivalRateChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: ['0', '1', '2', '3', '4', '5', '6', '7'],
+                        datasets: [{
+                            label: 'Chance of Survival',
+                            data: [100, 93, 85, 77, 69, 61, 54, 48],
+                            borderColor: brilliantBlues.primary,
+                            backgroundColor: 'rgba(30, 103, 214, 0.1)',
+                            fill: true,
+                            tension: 0.4,
+                            pointBackgroundColor: brilliantBlues.primary,
+                            pointRadius: 4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                max: 100,
+                                title: { display: true, text: 'Survival Chance (%)' },
+                                ticks: { callback: (value) => value + '%' }
+                            },
+                            x: {
+                                title: { display: true, text: 'Minutes of Delay' },
+                                grid: { display: false }
+                            }
+                        },
+                        plugins: {
+                            legend: { display: false },
+                            tooltip: {
+                                callbacks: {
+                                    title: tooltipTitleCallback,
+                                    label: (context) => `After ${context.label} min delay, survival chance is approx. ${context.parsed.y.toFixed(0)}%`
+                                }
+                            }
+                        }
+                    }
+                });
+            };
+            
+            createCallVolumeChart();
+            createSurvivalRateChart();
+        });
+    </script>
+</body>
+</html>
