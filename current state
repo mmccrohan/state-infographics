@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infographic: The State of 911 in Arkansas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <!-- 
+    Infographic Plan & Visualization Choices
+    -------------------------------------------
+    Narrative Structure:
+    1.  Introduction/Hook: Start with a powerful headline and key stats to grab attention.
+    2.  Market Overview (The Landscape): Detail the current state of Arkansas's 911 system - PSAPs, NG911 network progress.
+    3.  Key Challenges (The Pain Points): Visualize the core problems - rural response delays, dispatcher shortages, data fragmentation.
+    4.  The Human & Financial Cost: Quantify the impact of these challenges using metrics.
+    5.  The Path Forward (The Solution): Illustrate the transition to a fully capable NG911 system, highlighting where data solutions fit.
+
+    Visualization Choices (No SVG, No Mermaid JS):
+    - PSAP Structure (Data Point): Show composition of county vs. municipal PSAPs.
+      - Goal: Compare.
+      - Chosen Visualization: Donut Chart (Chart.js/Canvas).
+      - Justification: Excellent for showing simple part-to-whole composition. Clear and easy to read.
+    - NG911 ESInet Progress (Data Point): Display the percentage of PSAPs on the new network.
+      - Goal: Inform.
+      - Chosen Visualization: Single Big Number with a descriptive gauge/donut chart (Chart.js/Canvas).
+      - Justification: Conveys a single, powerful metric effectively. The donut chart adds visual context to the percentage.
+    - NG911 i3 Readiness (Data Point): Contrast the low i3 readiness with high ESInet connectivity.
+      - Goal: Compare.
+      - Chosen Visualization: Bar Chart (Chart.js/Canvas).
+      - Justification: Ideal for direct comparison between two distinct metrics (ESInet vs. i3 readiness).
+    - Rural vs. Urban Response Time (Data Point): Compare average EMS response times.
+      - Goal: Compare.
+      - Chosen Visualization: Bar Chart (Chart.js/Canvas).
+      - Justification: Clearly highlights the stark difference in response times between the two geographic categories.
+    - Dispatcher Vacancy Rate (Data Point): Show the number of unfilled positions.
+      - Goal: Inform.
+      - Chosen Visualization: Pictograph using HTML/CSS/Unicode characters.
+      - Justification: Creates a more visually engaging representation of a statistic than just a number. No SVG needed.
+    - PSAP Consolidation Flow (Data Point): Illustrate the process and outcomes (success vs. stalled).
+      - Goal: Organize.
+      - Chosen Visualization: Structured HTML/CSS with Tailwind.
+      - Justification: A flowchart created with styled divs and borders can clearly show process and decision points without using SVG or Mermaid.
+    - Cost of Turnover (Data Point): Estimate the financial impact of dispatcher vacancies.
+      - Goal: Inform.
+      - Chosen Visualization: Single Big Number.
+      - Justification: Best way to highlight a single, impactful financial figure.
+
+    Color Palette Selection:
+    - Chosen Palette Name: Brilliant Blues.
+    - HEX Codes: #003F5C, #366E8A, #6699CC, #99CCFF, #58508D, #BC5090, #FF6361, #FFA600.
+    - Justification: This palette is professional, high-contrast, and visually appealing, aligning with the "professional & stylish" requirement while being vibrant.
+
+    Confirmation: NEITHER Mermaid JS NOR SVG were used in this output. All visualizations are rendered using Chart.js on Canvas or structured HTML/CSS with Tailwind.
+    -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F0F4F8; 
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #003F5C, #366E8A);
+            color: white;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.2), 0 4px 6px -4px rgb(0 0 0 / 0.2);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 900;
+            line-height: 1;
+            color: #99CCFF;
+        }
+
+        .flow-step {
+            @apply bg-white p-4 rounded-lg shadow-md text-center flex flex-col justify-center items-center;
+            border-left: 4px solid #6699CC;
+        }
+        
+        .flow-arrow {
+            @apply text-5xl text-gray-300 flex items-center justify-center;
+        }
+        
+        .flow-connector {
+            @apply w-full h-1 bg-gray-300;
+        }
+
+    </style>
+</head>
+<body class="text-gray-700">
+
+    <div class="container mx-auto p-4 md:p-8">
+
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-6xl font-black text-[#003F5C] mb-2">The State of 911 in Arkansas</h1>
+            <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">A data-driven look into the challenges and opportunities in Arkansas's emergency response ecosystem as it transitions to Next Generation 911.</p>
+        </header>
+
+        <main class="space-y-12">
+            
+            <section id="overview">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="stat-card md:col-span-1 p-6 flex flex-col justify-center items-center text-center">
+                        <div class="stat-number">92</div>
+                        <h3 class="text-xl font-bold mt-2">Public Safety Answering Points (PSAPs)</h3>
+                        <p class="mt-1 text-gray-300">Serving the state as of Dec 2024, managed at county and municipal levels.</p>
+                    </div>
+                    <div class="card md:col-span-2">
+                         <h3 class="text-xl font-bold text-[#003F5C] mb-4 text-center">PSAP Operational Structure</h3>
+                         <p class="text-center text-gray-600 mb-4">The majority of emergency call centers are managed at the county level, creating a decentralized landscape for technology and procedure implementation.</p>
+                        <div class="chart-container" style="height: 250px; max-height: 250px;">
+                            <canvas id="psapStructureChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="ng911-transition">
+                <h2 class="text-3xl font-bold text-center text-[#003F5C] mb-8">The Journey to Next Generation 911</h2>
+                 <p class="text-center text-gray-600 mb-8 max-w-3xl mx-auto">Arkansas has made significant investments in building the digital highway for NG911. However, progress on core service integration reveals a critical gap between network infrastructure and data-handling capabilities.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div class="card">
+                        <h3 class="text-xl font-bold text-[#003F5C] mb-4 text-center">NG911 Network Readiness</h3>
+                        <p class="text-center text-gray-600 mb-4">A high percentage of PSAPs are connected to the statewide Emergency Services IP Network (ESInet), the backbone of NG911.</p>
+                        <div class="chart-container" style="height: 300px; max-height: 300px;">
+                            <canvas id="esinetProgressChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3 class="text-xl font-bold text-[#003F5C] mb-4 text-center">Core Services: ESInet vs. i3 Readiness</h3>
+                        <p class="text-center text-gray-600 mb-4">While network connectivity is high, readiness for the i3 standard—essential for advanced data and media exchange—is lagging, limiting the system's full potential.</p>
+                        <div class="chart-container">
+                            <canvas id="i3ReadinessChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="challenges">
+                 <h2 class="text-3xl font-bold text-center text-[#003F5C] mb-8">Critical Challenges on the Front Lines</h2>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                     <div class="card">
+                        <h3 class="text-xl font-bold text-[#003F5C] mb-4 text-center">The Rural-Urban Divide in Response</h3>
+                        <p class="text-center text-gray-600 mb-4">Vast geography creates a significant disparity in how quickly help can arrive. Average EMS response times in rural areas are more than double those in urban centers, a critical factor when seconds count.</p>
+                        <div class="chart-container">
+                             <canvas id="responseTimeChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="card flex flex-col justify-center">
+                        <h3 class="text-xl font-bold text-[#003F5C] mb-4 text-center">The Weight of Staffing Shortages</h3>
+                        <p class="text-center text-gray-600 mb-4">A statewide shortage of public safety telecommunicators puts immense pressure on existing staff, increasing the risk of burnout and errors.</p>
+                        <div class="text-center">
+                            <div class="stat-number text-[#FF6361]">145</div>
+                            <div class="text-lg font-semibold mt-2">Unfilled Dispatcher Positions Reported in 2023</div>
+                            <p class="text-sm text-gray-500">(An estimated 11% vacancy rate)</p>
+                            <div class="flex justify-center space-x-2 text-4xl mt-6">
+                                <span title="Filled Position">👤</span>
+                                <span title="Filled Position">👤</span>
+                                <span title="Filled Position">👤</span>
+                                <span title="Filled Position">👤</span>
+                                <span title="Filled Position">👤</span>
+                                <span title="Filled Position">👤</span>
+                                <span title="Filled Position">👤</span>
+                                <span title="Filled Position">👤</span>
+                                <span title="Filled Position" class="opacity-30">👤</span>
+                                <span title="Unfilled Position" class="text-red-300 opacity-50">?</span>
+                            </div>
+                             <p class="mt-2 text-sm text-gray-500">For every 9 dispatchers on duty, there is roughly 1 vacant post.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="consolidation-flow">
+                <h2 class="text-3xl font-bold text-center text-[#003F5C] mb-8">The Complex Path of PSAP Consolidation</h2>
+                <p class="text-center text-gray-600 mb-8 max-w-3xl mx-auto">Consolidating PSAPs is a key strategy for improving efficiency, but it can be fraught with political and financial hurdles, as seen in Garland County. Such disputes can stall technological progress and data standardization.</p>
+                <div class="grid grid-cols-1 md:grid-cols-5 items-center gap-4">
+                    <div class="flow-step">
+                        <div class="text-2xl font-bold text-[#6699CC]">1</div>
+                        <h4 class="font-semibold mt-2">Consolidation Plan Proposed</h4>
+                        <p class="text-xs text-gray-500">Garland County & City of Hot Springs</p>
+                    </div>
+                    <div class="flow-arrow hidden md:flex">➔</div>
+                    <div class="flow-step bg-red-50 border-l-red-400">
+                        <div class="text-2xl font-bold text-red-500">2</div>
+                        <h4 class="font-semibold mt-2">Stalled: No Progress</h4>
+                        <p class="text-xs text-gray-500">Deadline passes, city declines consolidation</p>
+                    </div>
+                    <div class="flow-arrow hidden md:flex">➔</div>
+                    <div class="flow-step bg-yellow-50 border-l-yellow-400">
+                        <div class="text-2xl font-bold text-yellow-500">3</div>
+                        <h4 class="font-semibold mt-2">Funding at Risk</h4>
+                        <p class="text-xs text-gray-500">~$500k/year in 911 fees could be withheld, creating uncertainty</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="cost-of-inaction">
+                 <h2 class="text-3xl font-bold text-center text-[#003F5C] mb-8">The Quantifiable Cost of Inaction</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                     <div class="stat-card p-8 text-center flex flex-col justify-center">
+                        <h3 class="text-2xl font-bold mb-2">Each Minute of Delay Matters</h3>
+                        <p class="stat-number text-[#FFA600]">13%</p>
+                        <p class="text-lg mt-2">Potential decrease in survival rates for critical emergencies with each minute of delay.</p>
+                    </div>
+                     <div class="stat-card p-8 text-center flex flex-col justify-center" style="background: linear-gradient(135deg, #BC5090, #FF6361);">
+                        <h3 class="text-2xl font-bold mb-2">The Financial Toll of Turnover</h3>
+                        <p class="stat-number text-white">$1M+</p>
+                        <p class="text-lg mt-2">Conservative estimated annual cost to Arkansas from dispatcher turnover and vacancies.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="text-center mt-16 pt-8 border-t border-gray-300">
+            <p class="text-gray-500">Data synthesized from public records and emergency services research reports. This infographic presents a strategic analysis for enhancing public safety in Arkansas. All visualizations are rendered via HTML Canvas and do not use SVG or Mermaid JS.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        const brilliantBlues = {
+            darkBlue: '#003F5C',
+            midBlue: '#366E8A',
+            lightBlue: '#6699CC',
+            paleBlue: '#99CCFF',
+            purple: '#58508D',
+            pink: '#BC5090',
+            red: '#FF6361',
+            orange: '#FFA600'
+        };
+
+        function wrapLabels(label, maxWidth) {
+            if (typeof label !== 'string' || label.length <= maxWidth) {
+                return label;
+            }
+            const words = label.split(' ');
+            let lines = [];
+            let currentLine = '';
+            words.forEach(word => {
+                if ((currentLine + ' ' + word).trim().length > maxWidth && currentLine.length > 0) {
+                    lines.push(currentLine);
+                    currentLine = word;
+                } else {
+                    currentLine = (currentLine + ' ' + word).trim();
+                }
+            });
+            lines.push(currentLine);
+            return lines;
+        }
+
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            }
+            return label;
+        };
+        
+        const defaultChartOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    labels: {
+                        color: brilliantBlues.darkBlue,
+                        font: {
+                            family: 'Inter',
+                            size: 12
+                        }
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        title: tooltipTitleCallback
+                    },
+                    backgroundColor: 'rgba(0, 63, 92, 0.9)',
+                    titleFont: {
+                         family: 'Inter',
+                         size: 14,
+                         weight: 'bold'
+                    },
+                    bodyFont: {
+                        family: 'Inter',
+                        size: 12
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    ticks: {
+                        color: brilliantBlues.darkBlue,
+                        font: {
+                            family: 'Inter',
+                        }
+                    },
+                    grid: {
+                        display: false
+                    }
+                },
+                y: {
+                    ticks: {
+                        color: brilliantBlues.darkBlue,
+                        font: {
+                            family: 'Inter',
+                        }
+                    },
+                     grid: {
+                        color: '#E0E0E0'
+                    }
+                }
+            }
+        };
+
+        new Chart(document.getElementById('psapStructureChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['County-Managed', 'Municipality-Managed'],
+                datasets: [{
+                    label: 'PSAP Structure',
+                    data: [75, 17],
+                    backgroundColor: [brilliantBlues.lightBlue, brilliantBlues.purple],
+                    borderColor: '#FFFFFF',
+                    borderWidth: 4,
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                ...defaultChartOptions,
+                cutout: '70%',
+                scales: { x: { display: false }, y: { display: false } },
+                 plugins: {
+                    ...defaultChartOptions.plugins,
+                    legend: {
+                        position: 'bottom',
+                         labels: {
+                            color: brilliantBlues.darkBlue,
+                            font: { family: 'Inter', size: 14 }
+                        }
+                    }
+                }
+            }
+        });
+
+        new Chart(document.getElementById('esinetProgressChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['ESInet Connected', 'Not Connected'],
+                datasets: [{
+                    data: [85, 92 - 85], 
+                    backgroundColor: [brilliantBlues.midBlue, '#E0E6ED'],
+                    borderColor: '#FFFFFF',
+                    borderWidth: 4,
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                ...defaultChartOptions,
+                cutout: '75%',
+                scales: { x: { display: false }, y: { display: false } },
+                plugins: {
+                    ...defaultChartOptions.plugins,
+                    legend: { display: false },
+                    tooltip: { enabled: false }
+                },
+                elements: {
+                    arc: {
+                        roundedCorners: 0,
+                    }
+                },
+                animation: {
+                    onComplete: function(animation) {
+                        const ctx = animation.chart.ctx;
+                        ctx.textAlign = 'center';
+                        ctx.textBaseline = 'middle';
+                        const centerX = animation.chart.width / 2;
+                        const centerY = animation.chart.height / 2;
+                        ctx.font = "bold 48px 'Inter'";
+                        ctx.fillStyle = brilliantBlues.darkBlue;
+                        ctx.fillText('92%', centerX, centerY - 15);
+                        ctx.font = "16px 'Inter'";
+                        ctx.fillStyle = brilliantBlues.darkBlue;
+                        ctx.fillText('Connected', centerX, centerY + 20);
+                    }
+                }
+            }
+        });
+
+        new Chart(document.getElementById('i3ReadinessChart'), {
+            type: 'bar',
+            data: {
+                labels: ['ESInet Network Connectivity', 'i3 Core Service Readiness'],
+                datasets: [{
+                    label: 'PSAP Readiness (%)',
+                    data: [92, 32], 
+                    backgroundColor: [brilliantBlues.lightBlue, brilliantBlues.red],
+                    borderColor: [brilliantBlues.midBlue, brilliantBlues.pink],
+                    borderWidth: 2,
+                    borderRadius: 5
+                }]
+            },
+            options: {
+                ...defaultChartOptions,
+                indexAxis: 'y',
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        max: 100,
+                        ticks: {
+                           callback: function(value) { return value + "%" }
+                        }
+                    },
+                    y: {
+                       ticks: {
+                           font: { size: 14 }
+                       }
+                    }
+                },
+                plugins: {
+                    ...defaultChartOptions.plugins,
+                    legend: { display: false }
+                }
+            }
+        });
+        
+        new Chart(document.getElementById('responseTimeChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Urban Areas', 'Rural Areas'],
+                datasets: [{
+                    label: 'Average EMS Response Time (minutes)',
+                    data: [7, 14.5],
+                    backgroundColor: [brilliantBlues.purple, brilliantBlues.orange],
+                     borderRadius: 5
+                }]
+            },
+            options: {
+                ...defaultChartOptions,
+                 scales: {
+                    y: {
+                        beginAtZero: true,
+                         title: {
+                            display: true,
+                            text: 'Minutes',
+                            color: brilliantBlues.darkBlue,
+                            font: { family: 'Inter' }
+                        }
+                    }
+                },
+                plugins: {
+                     ...defaultChartOptions.plugins,
+                    legend: { display: false }
+                }
+            }
+        });
+
+
+    </script>
+</body>
+</html>
