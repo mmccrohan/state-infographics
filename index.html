@@ -114,10 +114,58 @@
             @apply text-5xl text-gray-300 flex items-center justify-center;
         }
         
-        .flow-connector {
-            @apply w-full h-1 bg-gray-300;
+        .source-icon {
+            display: inline-block;
+            width: 1rem;
+            height: 1rem;
+            line-height: 1rem;
+            font-size: 0.75rem;
+            font-weight: bold;
+            text-align: center;
+            border-radius: 50%;
+            background-color: #6699CC;
+            color: white;
+            cursor: pointer;
+            margin-left: 0.25rem;
+            position: relative;
+            top: -0.5rem;
         }
 
+        .tooltip {
+            position: absolute;
+            background-color: #003F5C;
+            color: white;
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.375rem;
+            font-size: 0.75rem;
+            line-height: 1.2;
+            z-index: 50;
+            width: max-content;
+            max-width: 200px;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.2s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .tooltip::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #003F5C transparent transparent transparent;
+        }
+
+        .has-tooltip:hover .tooltip {
+            opacity: 1;
+            visibility: visible;
+        }
     </style>
 </head>
 <body class="text-gray-700">
@@ -134,7 +182,13 @@
             <section id="overview">
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <div class="stat-card md:col-span-1 p-6 flex flex-col justify-center items-center text-center">
-                        <div class="stat-number">92</div>
+                        <div class="relative inline-block">
+                             <div class="stat-number">92</div>
+                             <div class="has-tooltip inline-block">
+                                <span class="source-icon">ⓘ</span>
+                                <div class="tooltip">Source: AR 911 Board Legislative Report, Dec 2024</div>
+                            </div>
+                        </div>
                         <h3 class="text-xl font-bold mt-2">Public Safety Answering Points (PSAPs)</h3>
                         <p class="mt-1 text-gray-300">Serving the state as of Dec 2024, managed at county and municipal levels.</p>
                     </div>
@@ -184,7 +238,13 @@
                         <h3 class="text-xl font-bold text-[#003F5C] mb-4 text-center">The Weight of Staffing Shortages</h3>
                         <p class="text-center text-gray-600 mb-4">A statewide shortage of public safety telecommunicators puts immense pressure on existing staff, increasing the risk of burnout and errors.</p>
                         <div class="text-center">
-                            <div class="stat-number text-[#FF6361]">145</div>
+                            <div class="relative inline-block">
+                                <div class="stat-number text-[#FF6361]">145</div>
+                                <div class="has-tooltip inline-block">
+                                    <span class="source-icon">ⓘ</span>
+                                    <div class="tooltip">Source: AR 911 Board Legislative Report, Dec 2024</div>
+                                </div>
+                            </div>
                             <div class="text-lg font-semibold mt-2">Unfilled Dispatcher Positions Reported in 2023</div>
                             <p class="text-sm text-gray-500">(An estimated 11% vacancy rate)</p>
                             <div class="flex justify-center space-x-2 text-4xl mt-6">
@@ -224,9 +284,10 @@
                     <div class="flow-step bg-yellow-50 border-l-yellow-400">
                         <div class="text-2xl font-bold text-yellow-500">3</div>
                         <h4 class="font-semibold mt-2">Funding at Risk</h4>
-                        <p class="text-xs text-gray-500">~$500k/year in 911 fees could be withheld, creating uncertainty</p>
+                        <p class="text-xs text-gray-500">~$500k/year in 911 fees could be withheld</p>
                     </div>
                 </div>
+                 <p class="text-center text-xs text-gray-500 mt-4">Source: AR 911 Board Legislative Report & Meeting Minutes</p>
             </section>
             
             <section id="cost-of-inaction">
@@ -234,12 +295,24 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                      <div class="stat-card p-8 text-center flex flex-col justify-center">
                         <h3 class="text-2xl font-bold mb-2">Each Minute of Delay Matters</h3>
-                        <p class="stat-number text-[#FFA600]">13%</p>
+                         <div class="relative inline-block">
+                            <p class="stat-number text-[#FFA600]">13%</p>
+                            <div class="has-tooltip inline-block">
+                                <span class="source-icon">ⓘ</span>
+                                <div class="tooltip">Source: JAMA Surgery, "Association of Response Time With Trauma Patient Outcomes"</div>
+                            </div>
+                        </div>
                         <p class="text-lg mt-2">Potential decrease in survival rates for critical emergencies with each minute of delay.</p>
                     </div>
                      <div class="stat-card p-8 text-center flex flex-col justify-center" style="background: linear-gradient(135deg, #BC5090, #FF6361);">
                         <h3 class="text-2xl font-bold mb-2">The Financial Toll of Turnover</h3>
-                        <p class="stat-number text-white">$1M+</p>
+                        <div class="relative inline-block">
+                            <p class="stat-number text-white">$1M+</p>
+                            <div class="has-tooltip inline-block">
+                                <span class="source-icon bg-pink-400">ⓘ</span>
+                                <div class="tooltip">Source: Based on 145 vacancies & JEMS EMS cost-per-hire data</div>
+                            </div>
+                        </div>
                         <p class="text-lg mt-2">Conservative estimated annual cost to Arkansas from dispatcher turnover and vacancies.</p>
                     </div>
                 </div>
@@ -453,7 +526,14 @@
                 },
                 plugins: {
                     ...defaultChartOptions.plugins,
-                    legend: { display: false }
+                    legend: { display: false },
+                    tooltip: {
+                        enabled: true,
+                        callbacks: {
+                            ...defaultChartOptions.plugins.tooltip.callbacks,
+                            footer: (tooltipItems) => 'Source: AR NG911 Dashboard'
+                        }
+                    }
                 }
             }
         });
@@ -484,7 +564,14 @@
                 },
                 plugins: {
                      ...defaultChartOptions.plugins,
-                    legend: { display: false }
+                    legend: { display: false },
+                    tooltip: {
+                        enabled: true,
+                        callbacks: {
+                            ...defaultChartOptions.plugins.tooltip.callbacks,
+                            footer: (tooltipItems) => 'Source: JAMA Surgery'
+                        }
+                    }
                 }
             }
         });
