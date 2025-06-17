@@ -1,20 +1,20 @@
-An Analysis of the Arkansas 911 Ecosystem: Maximizing the Return on Next Generation InvestmentHTML<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Infographic: The State of 911 in Arkansas</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <script src="[https://cdn.tailwindcss.com](https://cdn.tailwindcss.com)"></script>
+    <script src="[https://cdn.jsdelivr.net/npm/chart.js](https://cdn.jsdelivr.net/npm/chart.js)"></script>
+    <link rel="preconnect" href="[https://fonts.googleapis.com](https://fonts.googleapis.com)">
+    <link rel="preconnect" href="[https://fonts.gstatic.com](https://fonts.gstatic.com)" crossorigin>
+    <link href="[https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap](https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap)" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
             background-color: #F0F4F8; 
         }
-      .chart-container {
+     .chart-container {
             position: relative;
             width: 100%;
             max-width: 600px;
@@ -25,12 +25,12 @@ An Analysis of the Arkansas 911 Ecosystem: Maximizing the Return on Next Generat
         }
 
         @media (min-width: 768px) {
-          .chart-container {
+         .chart-container {
                 height: 350px;
             }
         }
         
-      .card {
+     .card {
             background-color: white;
             border-radius: 0.75rem;
             padding: 1.5rem;
@@ -39,12 +39,12 @@ An Analysis of the Arkansas 911 Ecosystem: Maximizing the Return on Next Generat
             height: 100%;
         }
 
-      .card:hover {
+     .card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
         }
 
-      .stat-card {
+     .stat-card {
             background: linear-gradient(135deg, #003F5C, #366E8A);
             color: white;
             border-radius: 0.75rem;
@@ -57,14 +57,14 @@ An Analysis of the Arkansas 911 Ecosystem: Maximizing the Return on Next Generat
             text-align: center;
         }
 
-      .stat-number {
+     .stat-number {
             font-size: 3rem;
             font-weight: 900;
             line-height: 1;
             color: #99CCFF;
         }
 
-      .source-icon {
+     .source-icon {
             display: inline-block;
             width: 1rem;
             height: 1rem;
@@ -79,7 +79,7 @@ An Analysis of the Arkansas 911 Ecosystem: Maximizing the Return on Next Generat
             margin-left: 0.5rem;
         }
 
-      .tooltip {
+     .tooltip {
             position: absolute;
             background-color: #003F5C;
             color: white;
@@ -99,7 +99,7 @@ An Analysis of the Arkansas 911 Ecosystem: Maximizing the Return on Next Generat
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
 
-      .tooltip::after {
+     .tooltip::after {
             content: '';
             position: absolute;
             top: 100%;
@@ -110,19 +110,19 @@ An Analysis of the Arkansas 911 Ecosystem: Maximizing the Return on Next Generat
             border-color: #003F5C transparent transparent transparent;
         }
 
-      .has-tooltip:hover.tooltip {
+     .has-tooltip:hover.tooltip {
             opacity: 1;
             visibility: visible;
         }
         
-      .solution-grid {
+     .solution-grid {
             display: grid;
             grid-template-columns: 1fr;
             gap: 1.5rem;
         }
 
         @media (min-width: 768px) {
-          .solution-grid {
+         .solution-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
         }
@@ -148,22 +148,22 @@ An Analysis of the Arkansas 911 Ecosystem: Maximizing the Return on Next Generat
                                  <div class="stat-number">92</div>
                                  <div class="has-tooltip inline-block">
                                      <span class="source-icon">ⓘ</span>
-                                     <div class="tooltip">Source: AR 911 Board Legislative Report, Dec 2024. This reflects a reduction from 101 PSAPs four years prior as part of a state-led consolidation effort.[1, 2]</div>
+                                     <div class="tooltip">Source: AR 911 Board Legislative Report, Dec 2024. This reflects a reduction from 101 PSAPs four years prior as part of a state-led consolidation effort. [1, 2]</div>
                                 </div>
                             </div>
                             <h3 class="text-xl font-bold mt-2">Public Safety Answering Points</h3>
-                            <p class="mt-1 text-gray-300">Funded PSAPs serving the state as of December 2024, down from over 100 as Arkansas pursues strategic consolidation for greater efficiency.[1, 3]</p>
+                            <p class="mt-1 text-gray-300">Funded PSAPs serving the state as of December 2024, down from over 100 as Arkansas pursues strategic consolidation for greater efficiency. [1, 3]</p>
                         </div>
                         <div class="stat-card">
                             <div class="relative inline-block">
                                  <div class="stat-number">$81M+</div>
                                  <div class="has-tooltip inline-block">
                                      <span class="source-icon">ⓘ</span>
-                                     <div class="tooltip">Source: AR 911 Board Legislative Report, Dec 2024. This figure represents reported local PSAP expenses for 2023 and does not include state-level board expenses.[1]</div>
+                                     <div class="tooltip">Source: AR 911 Board Legislative Report, Dec 2024. This figure represents reported local PSAP expenses for 2023 and does not include state-level board expenses. [1]</div>
                                 </div>
                             </div>
                             <h3 class="text-xl font-bold mt-2">Annual Local 911 Service Cost</h3>
-                            <p class="mt-1 text-gray-300">The total reported cost for local PSAPs to provide 911 service in 2023, reflecting a significant and growing financial commitment by the state's communities.[1]</p>
+                            <p class="mt-1 text-gray-300">The total reported cost for local PSAPs to provide 911 service in 2023, reflecting a significant and growing financial commitment by the state's communities. [1]</p>
                         </div>
                 </div>
             </section>
@@ -185,7 +185,7 @@ An Analysis of the Arkansas 911 Ecosystem: Maximizing the Return on Next Generat
                     </div>
                     <div class="card">
                         <h3 class="text-xl font-bold text-[#003F5C] mb-4 text-center">Core Services: i3 vs. Transitional Readiness</h3>
-                        <p class="text-center text-gray-600 mb-4">While network connectivity is high, readiness for the NENA i3 standard—essential for receiving rich data like video, health profiles, and precise location—is lagging. Many PSAPs remain on transitional systems, limiting the system's full potential and creating a gap in the return on investment.[4, 5]</p>
+                        <p class="text-center text-gray-600 mb-4">While network connectivity is high, readiness for the NENA i3 standard—essential for receiving rich data like video, health profiles, and precise location—is lagging. Many PSAPs remain on transitional systems, limiting the system's full potential and creating a gap in the return on investment. [4]</p>
                         <div class="chart-container">
                             <canvas id="i3ReadinessChart"></canvas>
                         </div>
@@ -199,12 +199,12 @@ An Analysis of the Arkansas 911 Ecosystem: Maximizing the Return on Next Generat
                 <div class="card max-w-2xl mx-auto">
                     <h3 class="text-xl font-bold text-[#003F5C] mb-4 text-center">Statewide NG911 GIS Data Layer Status</h3>
                     <ul class="space-y-3">
-                        <li class="flex items-start"><span class="text-2xl text-yellow-500 mr-3 mt-1">!</span> <div><span class="font-semibold">PSAP Boundaries:</span> In progress. State plans require evaluation of operational accuracy and modification where needed to reflect actual service areas.[6]</div></li>
-                        <li class="flex items-start"><span class="text-2xl text-yellow-500 mr-3 mt-1">!</span> <div><span class="font-semibold">Road Centerlines:</span> Data exists but requires evaluation and standardization to conform to the NENA NG911 data model for reliable routing.[6]</div></li>
-                        <li class="flex items-start"><span class="text-2xl text-red-500 mr-3 mt-1">✗</span> <div><span class="font-semibold">Address Points:</span> A critical gap. The state plan calls for a gap analysis and acknowledges this layer is not yet fully created or maintained statewide, which is essential for precise location validation.[6]</div></li>
-                        <li class="flex items-start"><span class="text-2xl text-red-500 mr-3 mt-1">✗</span> <div><span class="font-semibold">Emergency Service Boundaries (ESB/ESZ):</span> Identified as a specific need for development. These layers for law, fire, and EMS are required to dispatch the correct first responders.[6, 7]</div></li>
+                        <li class="flex items-start"><span class="text-2xl text-yellow-500 mr-3 mt-1">!</span> <div><span class="font-semibold">PSAP Boundaries:</span> In progress. State plans require evaluation of operational accuracy and modification where needed to reflect actual service areas. [5]</div></li>
+                        <li class="flex items-start"><span class="text-2xl text-yellow-500 mr-3 mt-1">!</span> <div><span class="font-semibold">Road Centerlines:</span> Data exists but requires evaluation and standardization to conform to the NENA NG911 data model for reliable routing. [5]</div></li>
+                        <li class="flex items-start"><span class="text-2xl text-red-500 mr-3 mt-1">✗</span> <div><span class="font-semibold">Address Points:</span> A critical gap. The state plan calls for a gap analysis and acknowledges this layer is not yet fully created or maintained statewide, which is essential for precise location validation. [5]</div></li>
+                        <li class="flex items-start"><span class="text-2xl text-red-500 mr-3 mt-1">✗</span> <div><span class="font-semibold">Emergency Service Boundaries (ESB/ESZ):</span> Identified as a specific need for development. These layers for law, fire, and EMS are required to dispatch the correct first responders. [5, 6]</div></li>
                     </ul>
-                    <p class="text-center text-xs text-gray-500 mt-4">Source: Arkansas NG911 GIS Plan [6]</p>
+                    <p class="text-center text-xs text-gray-500 mt-4">Source: Arkansas NG911 GIS Plan [5]</p>
                 </div>
             </section>
 
@@ -214,17 +214,17 @@ An Analysis of the Arkansas 911 Ecosystem: Maximizing the Return on Next Generat
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                      <div class="card flex flex-col justify-center">
                         <h3 class="text-xl font-bold text-[#003F5C] mb-4 text-center">The Statewide Vacancy Crisis</h3>
-                        <p class="text-center text-gray-600 mb-4">A severe, statewide shortage of telecommunicators puts immense pressure on existing staff, increasing the risk of burnout and errors. This reflects a national trend where 82% of 911 centers report being understaffed.[8, 9]</p>
+                        <p class="text-center text-gray-600 mb-4">A severe, statewide shortage of telecommunicators puts immense pressure on existing staff, increasing the risk of burnout and errors. This reflects a national trend where 82% of 911 centers report being understaffed. [7, 8]</p>
                         <div class="text-center">
                             <div class="relative inline-block">
                                 <div class="stat-number text-[#FF6361]">145</div>
                                 <div class="has-tooltip inline-block">
                                     <span class="source-icon">ⓘ</span>
-                                    <div class="tooltip">Source: AR 911 Board Legislative Report, Dec 2024. This represents an estimated 10.6% vacancy rate based on 2023 budgeted staffing levels.[1]</div>
+                                    <div class="tooltip">Source: AR 911 Board Legislative Report, Dec 2024. This represents an estimated 10.6% vacancy rate based on 2023 budgeted staffing levels. [1]</div>
                                 </div>
                             </div>
                             <div class="text-lg font-semibold mt-2">Unfilled Dispatcher Positions Statewide</div>
-                            <p class="text-sm text-gray-500">This shortage forces mandatory overtime, increases stress, and contributes to a vicious cycle of high turnover.[10, 11, 12]</p>
+                            <p class="text-sm text-gray-500">This shortage forces mandatory overtime, increases stress, and contributes to a vicious cycle of high turnover. [9, 10, 11]</p>
                         </div>
                     </div>
                     <div class="card">
@@ -233,7 +233,7 @@ An Analysis of the Arkansas 911 Ecosystem: Maximizing the Return on Next Generat
                         <div class="p-4 rounded-lg bg-gray-100 text-center flex flex-col h-full justify-center">
                             <div class="text-4xl my-4 opacity-50">🏃‍♂️➡️🔥➡️🏃‍♀️</div>
                             <p class="text-sm font-semibold">High Vacancies → Increased Overtime → Burnout → More Vacancies</p>
-                            <p class="text-xs text-gray-500 mt-2">This feedback loop degrades service quality, as seen in reports of 911 call delays in Little Rock, and makes recruitment even more difficult.[13, 14] Breaking this cycle requires tools that reduce dispatcher workload and stress.</p>
+                            <p class="text-xs text-gray-500 mt-2">This feedback loop degrades service quality, as seen in reports of 911 call delays in Little Rock, and makes recruitment even more difficult. [10, 12] Breaking this cycle requires tools that reduce dispatcher workload and stress.</p>
                         </div>
                     </div>
                 </div>
@@ -268,7 +268,7 @@ An Analysis of the Arkansas 911 Ecosystem: Maximizing the Return on Next Generat
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                      <div class="card">
                         <h3 class="text-xl font-bold text-[#003F5C] mb-4 text-center">The Rural-Urban Response Divide</h3>
-                        <p class="text-center text-gray-600 mb-4">Vast geography and GIS data gaps create a significant disparity in how quickly help can arrive. National data shows average EMS response times in rural areas are more than double those in urban centers.[15, 16]</p>
+                        <p class="text-center text-gray-600 mb-4">Vast geography and GIS data gaps create a significant disparity in how quickly help can arrive. National data shows average EMS response times in rural areas are more than double those in urban centers. [13]</p>
                         <div class="chart-container">
                              <canvas id="responseTimeChart"></canvas>
                         </div>
@@ -279,10 +279,10 @@ An Analysis of the Arkansas 911 Ecosystem: Maximizing the Return on Next Generat
                             <p class="stat-number text-[#FFA600]">10%</p>
                             <div class="has-tooltip inline-block">
                                 <span class="source-icon">ⓘ</span>
-                                <div class="tooltip">Source: American Heart Association data indicates survival from cardiac arrest decreases 7-10% for every minute without intervention.[17]</div>
+                                <div class="tooltip">Source: American Heart Association data indicates survival from cardiac arrest decreases 7-10% for every minute without intervention. [14]</div>
                             </div>
                         </div>
-                        <p class="text-lg mt-2">Approximate decrease in survival for cardiac arrest with each minute of delay. For trauma, each minute can increase mortality odds by 2%.[18]</p>
+                        <p class="text-lg mt-2">Approximate decrease in survival for cardiac arrest with each minute of delay. For trauma, each minute can increase mortality odds by 2%. [15]</p>
                     </div>
                      <div class="stat-card p-8" style="background: linear-gradient(135deg, #BC5090, #FF6361);">
                         <h3 class="text-2xl font-bold mb-2">The Financial Toll of Turnover</h3>
@@ -290,7 +290,7 @@ An Analysis of the Arkansas 911 Ecosystem: Maximizing the Return on Next Generat
                             <p class="stat-number text-white">$4M+</p>
                             <div class="has-tooltip inline-block">
                                 <span class="source-icon bg-pink-400">ⓘ</span>
-                                <div class="tooltip">Based on 145 vacancies and an estimated cost of ~$30,000 per turnover event for recruitment, training, and overtime coverage. This is a recurring annual drain on public funds.[1, 19]</div>
+                                <div class="tooltip">Based on 145 vacancies and an estimated cost of ~$30,000 per turnover event for recruitment, training, and overtime coverage. This is a recurring annual drain on public funds. [1, 16]</div>
                             </div>
                         </div>
                         <p class="text-lg mt-2">Estimated annual cost to Arkansas from dispatcher turnover and vacancies, diverting funds that could be used for technology and retention.</p>
@@ -302,14 +302,14 @@ An Analysis of the Arkansas 911 Ecosystem: Maximizing the Return on Next Generat
                 <h2 class="text-3xl font-bold text-center text-[#003F5C] mb-8">The Path to a Safer Arkansas: An Intelligent Safety Platform as the Unifying Layer</h2>
                 <p class="text-center text-gray-600 mb-8 max-w-3xl mx-auto">An intelligent safety platform like RapidSOS provides a unified data layer that directly addresses Arkansas's core challenges. It acts as a force multiplier, enhancing the state's NG911 investment by delivering immediate, life-saving data to every PSAP, thereby closing the gap between infrastructure and operational capability.</p>
                 <div class="solution-grid">
-                    <div class="card text-center"><div class="text-2xl font-bold text-[#003F5C] mb-3">The Challenge</div><p class="font-semibold text-red-600">Inaccurate Location & GIS Data Gaps</p><p class="text-sm mt-2">Reliance on incomplete GIS data and caller descriptions leads to response delays, especially in rural areas, undermining the core function of NG911.[6]</p></div>
-                    <div class="card text-center bg-[#e6f0ff]"><div class="text-2xl font-bold text-[#003F5C] mb-3">The RapidSOS Solution</div><p class="font-semibold text-blue-600">Device-Based Location & Rich Data</p><p class="text-sm mt-2">Deliver precise, real-time GPS coordinates and additional data (health info, vehicle telematics) directly from the calling device, bypassing legacy location systems.[20, 21]</p></div>
-                    <div class="card text-center"><div class="text-2xl font-bold text-[#003F5C] mb-3">The Outcome</div><p class="font-semibold text-green-600">Faster, More Informed Response</p><p class="text-sm mt-2">Dramatically reduce response times, improve situational awareness for responders, and improve survival outcomes, as demonstrated in numerous save stories.[22, 23]</p></div>
-                    <div class="card text-center"><p class="font-semibold text-red-600">Dispatcher Overload & Burnout</p><p class="text-sm mt-2">High vacancy rates (145 statewide) and manual data entry increase stress, cognitive load, and the risk of errors, fueling a costly turnover cycle.[1, 12]</p></div>
-                    <div class="card text-center bg-[#e6f0ff]"><p class="font-semibold text-blue-600">A Unified, Automated Platform</p><p class="text-sm mt-2">Integrate data into a single screen and automate data entry via CAD integration, reducing manual tasks, eliminating screen-switching, and lowering cognitive load.[20, 24, 25]</p></div>
+                    <div class="card text-center"><div class="text-2xl font-bold text-[#003F5C] mb-3">The Challenge</div><p class="font-semibold text-red-600">Inaccurate Location & GIS Data Gaps</p><p class="text-sm mt-2">Reliance on incomplete GIS data and caller descriptions leads to response delays, especially in rural areas, undermining the core function of NG911. [5]</p></div>
+                    <div class="card text-center bg-[#e6f0ff]"><div class="text-2xl font-bold text-[#003F5C] mb-3">The RapidSOS Solution</div><p class="font-semibold text-blue-600">Device-Based Location & Rich Data</p><p class="text-sm mt-2">Deliver precise, real-time GPS coordinates and additional data (health info, vehicle telematics) directly from the calling device, bypassing legacy location systems. [17, 18]</p></div>
+                    <div class="card text-center"><div class="text-2xl font-bold text-[#003F5C] mb-3">The Outcome</div><p class="font-semibold text-green-600">Faster, More Informed Response</p><p class="text-sm mt-2">Dramatically reduce response times, improve situational awareness for responders, and improve survival outcomes, as demonstrated in numerous save stories. [19, 20]</p></div>
+                    <div class="card text-center"><p class="font-semibold text-red-600">Dispatcher Overload & Burnout</p><p class="text-sm mt-2">High vacancy rates (145 statewide) and manual data entry increase stress, cognitive load, and the risk of errors, fueling a costly turnover cycle. [1, 9]</p></div>
+                    <div class="card text-center bg-[#e6f0ff]"><p class="font-semibold text-blue-600">A Unified, Automated Platform</p><p class="text-sm mt-2">Integrate data into a single screen and automate data entry via CAD integration, reducing manual tasks, eliminating screen-switching, and lowering cognitive load. [17, 21, 22]</p></div>
                     <div class="card text-center"><p class="font-semibold text-green-600">Improved Efficiency & Staff Wellness</p><p class="text-sm mt-2">Decrease call handling times, support dispatcher focus and well-being, and directly combat the primary drivers of burnout, helping to reduce costly staff turnover.</p></div>
                     <div class="card text-center"><p class="font-semibold text-red-600">Language Barriers & Missed Details</p><p class="text-sm mt-2">Using third-party translation services causes critical delays, while manual listening under pressure risks missing vital keywords in a chaotic call.</p></div>
-                    <div class="card text-center bg-[#e6f0ff]"><p class="font-semibold text-blue-600">Live Translation & AI Transcription</p><p class="text-sm mt-2">Provide instant, on-screen text translation and automatically transcribe calls, using AI to highlight keywords for immediate recognition and enhanced awareness.[20, 26]</p></div>
+                    <div class="card text-center bg-[#e6f0ff]"><p class="font-semibold text-blue-600">Live Translation & AI Transcription</p><p class="text-sm mt-2">Provide instant, on-screen text translation and automatically transcribe calls, using AI to highlight keywords for immediate recognition and enhanced awareness. [17]</p></div>
                     <div class="card text-center"><p class="font-semibold text-green-600">Equitable Access & Enhanced Safety</p><p class="text-sm mt-2">Serve all communities faster regardless of language, and ensure critical details are never missed, leading to safer and more effective resource allocation.</p></div>
                 </div>
             </section>
@@ -403,7 +403,8 @@ An Analysis of the Arkansas 911 Ecosystem: Maximizing the Return on Next Generat
             type: 'doughnut',
             data: {
                 labels:,
-                datasets:, // 85 of 92 PSAPs connected, as of Dec 2024 report [1] implies 85/92 = 92.4%. We'll use 85 connected, 7 not.
+                datasets: [{
+                    data: , 
                     backgroundColor:,
                     borderColor: '#FFFFFF',
                     borderWidth: 4,
@@ -411,7 +412,7 @@ An Analysis of the Arkansas 911 Ecosystem: Maximizing the Return on Next Generat
                 }]
             },
             options: {
-              ...defaultChartOptions,
+             ...defaultChartOptions,
                 cutout: '75%',
                 scales: { x: { display: false }, y: { display: false } },
                 plugins: {
@@ -419,7 +420,7 @@ An Analysis of the Arkansas 911 Ecosystem: Maximizing the Return on Next Generat
                     tooltip: { enabled: false },
                     title: {
                         display: true,
-                        text: 'Source: AR 911 Board Reports [1, 4]',
+                        text: 'Source: AR 911 Board Reports [1, 23]',
                         position: 'bottom',
                         font: { size: 10 },
                         color: '#999'
@@ -438,7 +439,7 @@ An Analysis of the Arkansas 911 Ecosystem: Maximizing the Return on Next Generat
                         ctx.fillText('92%', centerX, centerY - 15);
                         ctx.font = "16px 'Inter'";
                         ctx.fillStyle = brilliantBlues.darkBlue;
-                        ctx.fillText('of PSAPs', centerX, centerY + 20);
+                        ctx.fillText('Connected', centerX, centerY + 20);
                         ctx.restore();
                     }
                 }
@@ -450,7 +451,7 @@ An Analysis of the Arkansas 911 Ecosystem: Maximizing the Return on Next Generat
             type: 'bar',
             data: {
                 labels:,],
-                datasets:, // 85 of 92 PSAPs are connected (92.4%). 54 of 86 connected entities are i3 (62.8%).[1, 4]
+                datasets:,
                     backgroundColor:,
                     borderColor:,
                     borderWidth: 2,
@@ -458,7 +459,7 @@ An Analysis of the Arkansas 911 Ecosystem: Maximizing the Return on Next Generat
                 }]
             },
             options: {
-              ...defaultChartOptions,
+             ...defaultChartOptions,
                 indexAxis: 'y',
                 scales: {
                     x: {
@@ -475,12 +476,12 @@ An Analysis of the Arkansas 911 Ecosystem: Maximizing the Return on Next Generat
                     }
                 },
                 plugins: {
-                  ...defaultChartOptions.plugins,
+                 ...defaultChartOptions.plugins,
                     legend: { display: false },
                     tooltip: {
                         enabled: true,
                         callbacks: {
-                          ...defaultChartOptions.plugins.tooltip.callbacks,
+                         ...defaultChartOptions.plugins.tooltip.callbacks,
                             label: function(context) {
                                 let label = context.dataset.label |
 | '';
@@ -492,7 +493,7 @@ An Analysis of the Arkansas 911 Ecosystem: Maximizing the Return on Next Generat
                                 }
                                 return label;
                             },
-                            footer: (tooltipItems) => 'Source: AR 911 Board Mins, May 2024 [4]'
+                            footer: (tooltipItems) => 'Source: AR 911 Board Mins, May 2024 [23]'
                         }
                     }
                 }
@@ -510,7 +511,7 @@ An Analysis of the Arkansas 911 Ecosystem: Maximizing the Return on Next Generat
                 }]
             },
             options: {
-              ...defaultChartOptions,
+             ...defaultChartOptions,
                  scales: {
                     y: {
                         beginAtZero: true,
@@ -523,13 +524,13 @@ An Analysis of the Arkansas 911 Ecosystem: Maximizing the Return on Next Generat
                     }
                 },
                 plugins: {
-                   ...defaultChartOptions.plugins,
+                  ...defaultChartOptions.plugins,
                     legend: { display: false },
                     tooltip: {
                         enabled: true,
                         callbacks: {
-                          ...defaultChartOptions.plugins.tooltip.callbacks,
-                            footer: (tooltipItems) => 'Source: JAMA Surgery / HRSA Report [15, 16]'
+                         ...defaultChartOptions.plugins.tooltip.callbacks,
+                            footer: (tooltipItems) => 'Source: JAMA Surgery / HRSA Report [13, 24]'
                         }
                     }
                 }
