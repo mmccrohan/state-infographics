@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infographic: The State of 911 in Arkansas</title>
-    <script src="[https://cdn.tailwindcss.com](https://cdn.tailwindcss.com)"></script>
-    <script src="[https://cdn.jsdelivr.net/npm/chart.js](https://cdn.jsdelivr.net/npm/chart.js)"></script>
-    <link rel="preconnect" href="[https://fonts.googleapis.com](https://fonts.googleapis.com)">
-    <link rel="preconnect" href="[https://fonts.gstatic.com](https://fonts.gstatic.com)" crossorigin>
-    <link href="[https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap](https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap)" rel="stylesheet">
+    <title>Infographic: An Analysis of the Arkansas 911 Ecosystem</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #F0F4F8; 
+            background-color: #F0F4F8;
         }
-     .chart-container {
+       .chart-container {
             position: relative;
             width: 100%;
             max-width: 600px;
@@ -23,28 +23,26 @@
             height: 300px;
             max-height: 400px;
         }
-
         @media (min-width: 768px) {
-         .chart-container {
+           .chart-container {
                 height: 350px;
             }
         }
-        
-     .card {
+       .card {
             background-color: white;
             border-radius: 0.75rem;
             padding: 1.5rem;
             box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             height: 100%;
+            display: flex;
+            flex-direction: column;
         }
-
-     .card:hover {
+       .card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
         }
-
-     .stat-card {
+       .stat-card {
             background: linear-gradient(135deg, #003F5C, #366E8A);
             color: white;
             border-radius: 0.75rem;
@@ -56,15 +54,17 @@
             align-items: center;
             text-align: center;
         }
-
-     .stat-number {
+       .stat-number {
             font-size: 3rem;
             font-weight: 900;
             line-height: 1;
             color: #99CCFF;
         }
-
-     .source-icon {
+       .has-tooltip {
+            position: relative;
+            display: inline-block;
+        }
+       .source-icon {
             display: inline-block;
             width: 1rem;
             height: 1rem;
@@ -75,11 +75,10 @@
             border-radius: 50%;
             background-color: #6699CC;
             color: white;
-            cursor: pointer;
+            cursor: help;
             margin-left: 0.5rem;
         }
-
-     .tooltip {
+       .tooltip {
             position: absolute;
             background-color: #003F5C;
             color: white;
@@ -97,9 +96,9 @@
             visibility: hidden;
             transition: opacity 0.2s ease;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            text-align: left;
         }
-
-     .tooltip::after {
+       .tooltip::after {
             content: '';
             position: absolute;
             top: 100%;
@@ -109,83 +108,83 @@
             border-style: solid;
             border-color: #003F5C transparent transparent transparent;
         }
-
-     .has-tooltip:hover.tooltip {
+       .has-tooltip:hover .tooltip {
             opacity: 1;
             visibility: visible;
         }
-        
-     .solution-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
+       .flow-diagram {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            background-color: #e2e8f0;
         }
-
-        @media (min-width: 768px) {
-         .solution-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
+       .flow-item {
+            font-size: 2rem;
+            opacity: 0.6;
+        }
+       .flow-arrow {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #4a5568;
         }
     </style>
 </head>
 <body class="text-gray-700">
-
     <div class="container mx-auto p-4 md:p-8">
 
         <header class="text-center mb-12">
-            <h1 class="text-4xl md:text-6xl font-black text-[#003F5C] mb-2">An Analysis of the Arkansas 911 Ecosystem</h1>
-            <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">Maximizing the Return on Next Generation Investment</p>
+            <h1 class="text-4xl md:text-6xl font-black text-[#003F5C] mb-2">The State of 911 in Arkansas</h1>
+            <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">A data-driven analysis of the challenges and opportunities in Arkansas's emergency response ecosystem as it transitions to Next Generation 911.</p>
         </header>
 
         <main class="space-y-16">
-            
+
             <section id="scale">
-                <h2 class="text-3xl font-bold text-center text-[#003F5C] mb-8">A System at a Critical Juncture</h2>
-                <p class="text-center text-gray-600 mb-8 max-w-3xl mx-auto">The Arkansas 911 system is a large, complex, and vital public service undergoing a period of intense transformation. As the state invests heavily in Next Generation 911 (NG911) infrastructure, understanding the scale of operations and the financial commitments involved is essential for strategic planning and ensuring a maximum return on investment.</p>
+                <h2 class="text-3xl font-bold text-center text-[#003F5C] mb-8">A System at Scale</h2>
+                 <p class="text-center text-gray-600 mb-8 max-w-3xl mx-auto">Arkansas's 911 system is a large, complex, and vital public service. As the state invests in its Next Generation 911 (NG911) transition, understanding the scale of operations and the financial commitments involved is essential for strategic planning.</p>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <div class="stat-card">
-                            <div class="relative inline-block">
-                                 <div class="stat-number">92</div>
-                                 <div class="has-tooltip inline-block">
-                                     <span class="source-icon">ⓘ</span>
-                                     <div class="tooltip">Source: AR 911 Board Legislative Report, Dec 2024. This reflects a reduction from 101 PSAPs four years prior as part of a state-led consolidation effort. [1, 2]</div>
-                                </div>
-                            </div>
-                            <h3 class="text-xl font-bold mt-2">Public Safety Answering Points</h3>
-                            <p class="mt-1 text-gray-300">Funded PSAPs serving the state as of December 2024, down from over 100 as Arkansas pursues strategic consolidation for greater efficiency. [1, 3]</p>
+                    <div class="stat-card">
+                        <div class="has-tooltip">
+                            <span class="stat-number">92</span>
+                            <span class="source-icon">ⓘ</span>
+                            <div class="tooltip">Source: AR 911 Board Legislative Report, Dec 2024. Reflects ongoing state-led consolidation efforts.</div>
                         </div>
-                        <div class="stat-card">
-                            <div class="relative inline-block">
-                                 <div class="stat-number">$81M+</div>
-                                 <div class="has-tooltip inline-block">
-                                     <span class="source-icon">ⓘ</span>
-                                     <div class="tooltip">Source: AR 911 Board Legislative Report, Dec 2024. This figure represents reported local PSAP expenses for 2023 and does not include state-level board expenses. [1]</div>
-                                </div>
-                            </div>
-                            <h3 class="text-xl font-bold mt-2">Annual Local 911 Service Cost</h3>
-                            <p class="mt-1 text-gray-300">The total reported cost for local PSAPs to provide 911 service in 2023, reflecting a significant and growing financial commitment by the state's communities. [1]</p>
+                        <h3 class="text-xl font-bold mt-2">Public Safety Answering Points</h3>
+                        <p class="mt-1 text-gray-300">Serving the state as of Dec 2024.</p>
+                    </div>
+                    <div class="stat-card">
+                        <div class="has-tooltip">
+                            <span class="stat-number">$70M+</span>
+                            <span class="source-icon">ⓘ</span>
+                            <div class="tooltip">Source: AR 911 Board Financial Reports, 2022. Represents the total estimated annual cost to provide 911 service.</div>
                         </div>
+                        <h3 class="text-xl font-bold mt-2">Annual 911 Service Cost</h3>
+                        <p class="mt-1 text-gray-300">The total estimated cost to provide 911 service.</p>
+                    </div>
                 </div>
             </section>
-            
+
             <section id="ng911-transition">
-                <h2 class="text-3xl font-bold text-center text-[#003F5C] mb-8">The NG911 Transition: Building the Highway, Missing the On-Ramps</h2>
-                 <p class="text-center text-gray-600 mb-8 max-w-3xl mx-auto">Arkansas has made remarkable progress in building the foundational "digital highway" for NG911—the statewide Emergency Services IP Network (ESInet). However, a closer look at core service readiness reveals a critical gap between network infrastructure and the ability of many Public Safety Answering Points (PSAPs) to handle the advanced data that this new highway was built to carry.</p>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <h2 class="text-3xl font-bold text-center text-[#003F5C] mb-8">The Journey to Next Generation 911</h2>
+                <p class="text-center text-gray-600 mb-8 max-w-3xl mx-auto">Arkansas has made significant investments in building the digital highway for NG911. However, progress on core service integration reveals a critical gap between network infrastructure and data-handling capabilities, limiting the return on this investment.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
                     <div class="card">
-                        <h3 class="text-xl font-bold text-[#003F5C] mb-4 text-center">NG911 ESInet Connectivity</h3>
-                        <p class="text-center text-gray-600 mb-4">The state has successfully connected the vast majority of its PSAPs to the IP-based network, a monumental infrastructure achievement.</p>
+                        <h3 class="text-xl font-bold text-[#003F5C] mb-4 text-center">NG911 Network Readiness</h3>
+                        <p class="text-center text-gray-600 mb-4 flex-grow">The state has successfully connected the vast majority of its PSAPs to the statewide Emergency Services IP Network (ESInet), a foundational achievement.</p>
                         <div class="chart-container" style="height: 300px; max-height: 300px;">
                             <canvas id="esinetProgressChart"></canvas>
                         </div>
-                         <div class="flex justify-center mt-4 space-x-4 text-sm">
-                            <div class="flex items-center"><span class="w-4 h-4 rounded-full bg-[#366E8A] mr-2"></span>Connected to ESInet</div>
-                            <div class="flex items-center"><span class="w-4 h-4 rounded-full bg-gray-300 mr-2"></span>Not Connected</div>
+                        <div class="flex justify-center mt-4 space-x-4 text-sm">
+                            <div class="flex items-center"><span class="w-4 h-4 rounded-full bg-[#366E8A] mr-2"></span>Connected</div>
+                            <div class="flex items-center"><span class="w-4 h-4 rounded-full bg-[#cbd5e1] mr-2"></span>Not Connected</div>
                         </div>
                     </div>
                     <div class="card">
-                        <h3 class="text-xl font-bold text-[#003F5C] mb-4 text-center">Core Services: i3 vs. Transitional Readiness</h3>
-                        <p class="text-center text-gray-600 mb-4">While network connectivity is high, readiness for the NENA i3 standard—essential for receiving rich data like video, health profiles, and precise location—is lagging. Many PSAPs remain on transitional systems, limiting the system's full potential and creating a gap in the return on investment. [4]</p>
+                        <h3 class="text-xl font-bold text-[#003F5C] mb-4 text-center">Core Services: ESInet vs. i3 Readiness</h3>
+                        <p class="text-center text-gray-600 mb-4 flex-grow">While network connectivity is high, readiness for the NENA i3 standard—essential for advanced data and media exchange—is lagging, limiting the system's full potential.</p>
                         <div class="chart-container">
                             <canvas id="i3ReadinessChart"></canvas>
                         </div>
@@ -194,129 +193,139 @@
             </section>
 
             <section id="gis-readiness">
-                <h2 class="text-3xl font-bold text-center text-[#003F5C] mb-8">Foundational Cracks I: The GIS Data Deficit</h2>
-                <p class="text-center text-gray-600 mb-8 max-w-3xl mx-auto">Accurate location is the cornerstone of effective NG911. The system's ability to automatically and precisely route calls based on geography depends entirely on the quality of its Geographic Information System (GIS) data. Arkansas's own strategic plans acknowledge significant gaps in the foundational GIS layers needed for this critical function, creating an unreliable base for the entire NG911 structure.</p>
+                <h2 class="text-3xl font-bold text-center text-[#003F5C] mb-8">The GIS Data Gap</h2>
+                <p class="text-center text-gray-600 mb-8 max-w-3xl mx-auto">Accurate location is the cornerstone of effective NG911. State plans acknowledge gaps in the Geographic Information System (GIS) data needed for precise call routing and location validation, creating an unreliable foundation.</p>
                 <div class="card max-w-2xl mx-auto">
-                    <h3 class="text-xl font-bold text-[#003F5C] mb-4 text-center">Statewide NG911 GIS Data Layer Status</h3>
+                    <h3 class="text-xl font-bold text-[#003F5C] mb-4 text-center">Statewide GIS Data Layer Status</h3>
                     <ul class="space-y-3">
-                        <li class="flex items-start"><span class="text-2xl text-yellow-500 mr-3 mt-1">!</span> <div><span class="font-semibold">PSAP Boundaries:</span> In progress. State plans require evaluation of operational accuracy and modification where needed to reflect actual service areas. [5]</div></li>
-                        <li class="flex items-start"><span class="text-2xl text-yellow-500 mr-3 mt-1">!</span> <div><span class="font-semibold">Road Centerlines:</span> Data exists but requires evaluation and standardization to conform to the NENA NG911 data model for reliable routing. [5]</div></li>
-                        <li class="flex items-start"><span class="text-2xl text-red-500 mr-3 mt-1">✗</span> <div><span class="font-semibold">Address Points:</span> A critical gap. The state plan calls for a gap analysis and acknowledges this layer is not yet fully created or maintained statewide, which is essential for precise location validation. [5]</div></li>
-                        <li class="flex items-start"><span class="text-2xl text-red-500 mr-3 mt-1">✗</span> <div><span class="font-semibold">Emergency Service Boundaries (ESB/ESZ):</span> Identified as a specific need for development. These layers for law, fire, and EMS are required to dispatch the correct first responders. [5, 6]</div></li>
+                        <li class="flex items-center"><span class="text-2xl text-green-500 mr-3">✓</span><div><span class="font-semibold">PSAP Boundaries:</span> In progress, but need statewide accuracy.</div></li>
+                        <li class="flex items-center"><span class="text-2xl text-green-500 mr-3">✓</span><div><span class="font-semibold">Road Centerlines:</span> Data exists, requires standardization for NG911.</div></li>
+                        <li class="flex items-center"><span class="text-2xl text-yellow-500 mr-3">!</span><div><span class="font-semibold">Address Points:</span> Gap analysis needed; not yet fully maintained statewide.</div></li>
+                        <li class="flex items-center"><span class="text-2xl text-red-500 mr-3">✗</span><div><span class="font-semibold">Emergency Service Zones (ESZ):</span> Identified as a specific need for development.</div></li>
                     </ul>
-                    <p class="text-center text-xs text-gray-500 mt-4">Source: Arkansas NG911 GIS Plan [5]</p>
+                    <p class="text-center text-xs text-gray-500 mt-4 flex-grow-0">Source: AR NG911 GIS Plan</p>
                 </div>
             </section>
 
-            <section id="staffing-crisis">
-                 <h2 class="text-3xl font-bold text-center text-[#003F5C] mb-8">Foundational Cracks II: The Human Element Under Pressure</h2>
-                <p class="text-center text-gray-600 mb-8 max-w-3xl mx-auto">The state's 911 system is facing a critical and persistent staffing shortage, placing immense strain on its most valuable asset: the public safety telecommunicators. This is not just an HR issue; it is an operational crisis with direct consequences for public safety, service quality, and fiscal health.</p>
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                     <div class="card flex flex-col justify-center">
-                        <h3 class="text-xl font-bold text-[#003F5C] mb-4 text-center">The Statewide Vacancy Crisis</h3>
-                        <p class="text-center text-gray-600 mb-4">A severe, statewide shortage of telecommunicators puts immense pressure on existing staff, increasing the risk of burnout and errors. This reflects a national trend where 82% of 911 centers report being understaffed. [7, 8]</p>
-                        <div class="text-center">
-                            <div class="relative inline-block">
-                                <div class="stat-number text-[#FF6361]">145</div>
-                                <div class="has-tooltip inline-block">
-                                    <span class="source-icon">ⓘ</span>
-                                    <div class="tooltip">Source: AR 911 Board Legislative Report, Dec 2024. This represents an estimated 10.6% vacancy rate based on 2023 budgeted staffing levels. [1]</div>
-                                </div>
-                            </div>
-                            <div class="text-lg font-semibold mt-2">Unfilled Dispatcher Positions Statewide</div>
-                            <p class="text-sm text-gray-500">This shortage forces mandatory overtime, increases stress, and contributes to a vicious cycle of high turnover. [9, 10, 11]</p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <h3 class="text-xl font-bold text-[#003F5C] mb-4 text-center">The Vicious Cycle of Burnout</h3>
-                        <p class="text-center text-gray-600 mb-4">The staffing shortage is both a cause and an effect of a challenging work environment. High stress and cognitive load from being understaffed are primary drivers of employee turnover, which in turn worsens the staffing shortage.</p>
-                        <div class="p-4 rounded-lg bg-gray-100 text-center flex flex-col h-full justify-center">
-                            <div class="text-4xl my-4 opacity-50">🏃‍♂️➡️🔥➡️🏃‍♀️</div>
-                            <p class="text-sm font-semibold">High Vacancies → Increased Overtime → Burnout → More Vacancies</p>
-                            <p class="text-xs text-gray-500 mt-2">This feedback loop degrades service quality, as seen in reports of 911 call delays in Little Rock, and makes recruitment even more difficult. [10, 12] Breaking this cycle requires tools that reduce dispatcher workload and stress.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="operational-hurdles">
-                <h2 class="text-3xl font-bold text-center text-[#003F5C] mb-8">The Operational Reality: Daily Hurdles on the Front Lines</h2>
-                <p class="text-center text-gray-600 mb-8 max-w-3xl mx-auto">The systemic challenges of data gaps and staffing shortages translate into tangible, moment-to-moment hurdles for dispatchers. These daily operational inefficiencies are not just minor frustrations; they are direct drivers of risk, delay, and inequity in emergency response.</p>
+            <section id="hidden-hurdles">
+                <h2 class="text-3xl font-bold text-center text-[#003F5C] mb-8">Hidden Operational Hurdles</h2>
+                <p class="text-center text-gray-600 mb-8 max-w-3xl mx-auto">Beyond infrastructure, daily operational challenges for dispatchers can delay response and increase risk. These issues are common nationwide in PSAPs without integrated intelligent data platforms.</p>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div class="card">
                         <h3 class="text-xl font-bold text-[#003F5C] mb-4 text-center">Challenge: Language Barriers</h3>
-                        <div class="p-4 rounded-lg bg-gray-100 text-center flex flex-col h-full justify-center">
-                            <div class="text-5xl my-4 opacity-50">📞 ➡️ ⏳ ➡️ 🗣️</div>
-                            <p class="text-sm font-semibold">Reliance on Third-Party Interpreters</p>
-                            <p class="text-xs text-gray-500 mt-2">Dialing out to a separate interpretation service introduces significant delays (often 60+ seconds), adds complexity, and increases the chance of miscommunication. This creates a two-tiered system where non-English speakers face inherent delays in receiving help.</p>
+                        <div class="flex flex-col h-full justify-center">
+                            <div class="flow-diagram my-4">
+                                <span class="flow-item">📞</span>
+                                <span class="flow-arrow">→</span>
+                                <span class="flow-item">⏳</span>
+                                <span class="flow-arrow">→</span>
+                                <span class="flow-item">🗣️</span>
+                            </div>
+                            <p class="text-sm font-semibold text-center">Reliance on Third-Party Interpreters</p>
+                            <p class="text-xs text-gray-500 mt-2 text-center flex-grow">Dialing out to a separate service introduces significant delays (often 60+ seconds), adds complexity, and increases the chance of miscommunication during critical moments.</p>
                         </div>
                     </div>
                     <div class="card">
-                        <h3 class="text-xl font-bold text-[#003F5C] mb-4 text-center">Challenge: Manual Data Processing</h3>
-                         <div class="p-4 rounded-lg bg-gray-100 text-center flex flex-col h-full justify-center">
-                            <div class="text-5xl my-4 opacity-50">🎧 ➡️ ⌨️ ➡️ 🤯</div>
-                            <p class="text-sm font-semibold">Cognitive Overload and Missed Keywords</p>
-                            <p class="text-xs text-gray-500 mt-2">Understaffed dispatchers must simultaneously listen, type, and identify critical keywords under immense pressure. This manual process risks missing vital details ("he has a gun," "I can't breathe") that could change an emergency outcome, especially when compounded by poor GIS data requiring manual location verification.</p>
+                        <h3 class="text-xl font-bold text-[#003F5C] mb-4 text-center">Challenge: Information Overload</h3>
+                        <div class="flex flex-col h-full justify-center">
+                            <div class="flow-diagram my-4">
+                                <span class="flow-item">🎧</span>
+                                <span class="flow-arrow">→</span>
+                                <span class="flow-item">⌨️</span>
+                                <span class="flow-arrow">→</span>
+                                <span class="flow-item">🤯</span>
+                            </div>
+                            <p class="text-sm font-semibold text-center">Manual Transcription & Keyword Spotting</p>
+                            <p class="text-xs text-gray-500 mt-2 text-center flex-grow">Dispatchers must simultaneously listen, type, and identify critical keywords under immense pressure, risking missed details that could change an emergency outcome.</p>
                         </div>
                     </div>
                 </div>
             </section>
-            
-            <section id="cost-of-inaction">
-                 <h2 class="text-3xl font-bold text-center text-[#003F5C] mb-8">The Quantifiable Consequences: Measuring the Cost of Delay</h2>
-                 <p class="text-center text-gray-600 mb-8 max-w-3xl mx-auto">The challenges facing Arkansas's 911 system have measurable and severe consequences. Delays caused by data gaps and operational hurdles translate directly into disparate response times, negative health outcomes, and significant, recurring financial costs to the state and its communities.</p>
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                     <div class="card">
-                        <h3 class="text-xl font-bold text-[#003F5C] mb-4 text-center">The Rural-Urban Response Divide</h3>
-                        <p class="text-center text-gray-600 mb-4">Vast geography and GIS data gaps create a significant disparity in how quickly help can arrive. National data shows average EMS response times in rural areas are more than double those in urban centers. [13]</p>
+
+            <section id="challenges">
+                <h2 class="text-3xl font-bold text-center text-[#003F5C] mb-8">Critical Challenges on the Front Lines</h2>
+                <p class="text-center text-gray-600 mb-8 max-w-3xl mx-auto">GIS data gaps and staffing shortages directly impact emergency outcomes, creating disparities in response times and putting immense strain on dispatchers.</p>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div class="card">
+                        <h3 class="text-xl font-bold text-[#003F5C] mb-4 text-center">The Rural-Urban Divide in Response</h3>
+                        <p class="text-center text-gray-600 mb-4 flex-grow">National data shows vast geography and GIS data gaps create a significant disparity in how quickly help can arrive. Average EMS response times in rural areas are often more than double those in urban centers.</p>
                         <div class="chart-container">
-                             <canvas id="responseTimeChart"></canvas>
+                            <canvas id="responseTimeChart"></canvas>
                         </div>
                     </div>
-                     <div class="stat-card p-8">
-                        <h3 class="text-2xl font-bold mb-2">The Human Cost of Delay</h3>
-                         <div class="relative inline-block">
-                            <p class="stat-number text-[#FFA600]">10%</p>
-                            <div class="has-tooltip inline-block">
+                    <div class="card flex-col justify-center">
+                        <h3 class="text-xl font-bold text-[#003F5C] mb-4 text-center">The Weight of Staffing Shortages</h3>
+                        <p class="text-center text-gray-600 mb-4">A statewide shortage of public safety telecommunicators puts immense pressure on existing staff, increasing the risk of burnout and errors.</p>
+                        <div class="text-center">
+                             <div class="has-tooltip">
+                                <span class="stat-number text-[#FF6361]">145</span>
                                 <span class="source-icon">ⓘ</span>
-                                <div class="tooltip">Source: American Heart Association data indicates survival from cardiac arrest decreases 7-10% for every minute without intervention. [14]</div>
+                                <div class="tooltip">Source: AR 911 Board Legislative Report, Dec 2024. Represents an estimated 11% vacancy rate.</div>
                             </div>
+                            <div class="text-lg font-semibold mt-2">Unfilled Dispatcher Positions Reported in 2023</div>
+                            <p class="text-sm text-gray-500">(An estimated 11% vacancy rate)</p>
                         </div>
-                        <p class="text-lg mt-2">Approximate decrease in survival for cardiac arrest with each minute of delay. For trauma, each minute can increase mortality odds by 2%. [15]</p>
                     </div>
-                     <div class="stat-card p-8" style="background: linear-gradient(135deg, #BC5090, #FF6361);">
-                        <h3 class="text-2xl font-bold mb-2">The Financial Toll of Turnover</h3>
-                        <div class="relative inline-block">
-                            <p class="stat-number text-white">$4M+</p>
-                            <div class="has-tooltip inline-block">
-                                <span class="source-icon bg-pink-400">ⓘ</span>
-                                <div class="tooltip">Based on 145 vacancies and an estimated cost of ~$30,000 per turnover event for recruitment, training, and overtime coverage. This is a recurring annual drain on public funds. [1, 16]</div>
-                            </div>
+                </div>
+            </section>
+
+            <section id="cost-of-inaction">
+                <h2 class="text-3xl font-bold text-center text-[#003F5C] mb-8">The Quantifiable Cost of Inaction</h2>
+                <p class="text-center text-gray-600 mb-8 max-w-3xl mx-auto">Delays and inefficiencies have measurable consequences, both in human lives and financial costs to the state.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="stat-card p-8">
+                        <h3 class="text-2xl font-bold mb-2">Each Minute of Delay Matters</h3>
+                        <div class="has-tooltip">
+                            <p class="stat-number text-[#FFA600]">~10%</p>
+                            <div class="tooltip">Source: JAMA Surgery, "Association of Response Time With Trauma Patient Outcomes" & AHA data.</div>
                         </div>
-                        <p class="text-lg mt-2">Estimated annual cost to Arkansas from dispatcher turnover and vacancies, diverting funds that could be used for technology and retention.</p>
+                        <p class="text-lg mt-2">Potential decrease in survival rates for critical emergencies with each minute of delay.</p>
+                    </div>
+                    <div class="stat-card p-8" style="background: linear-gradient(135deg, #BC5090, #FF6361);">
+                        <h3 class="text-2xl font-bold mb-2">The Financial Toll of Turnover</h3>
+                        <div class="has-tooltip">
+                            <p class="stat-number text-white">$1M+</p>
+                             <div class="tooltip">Source: Based on 145 vacancies & JEMS EMS cost-per-hire data.</div>
+                        </div>
+                        <p class="text-lg mt-2">Conservative estimated annual cost to Arkansas from dispatcher turnover and vacancies.</p>
                     </div>
                 </div>
             </section>
 
             <section id="solution">
-                <h2 class="text-3xl font-bold text-center text-[#003F5C] mb-8">The Path to a Safer Arkansas: An Intelligent Safety Platform as the Unifying Layer</h2>
-                <p class="text-center text-gray-600 mb-8 max-w-3xl mx-auto">An intelligent safety platform like RapidSOS provides a unified data layer that directly addresses Arkansas's core challenges. It acts as a force multiplier, enhancing the state's NG911 investment by delivering immediate, life-saving data to every PSAP, thereby closing the gap between infrastructure and operational capability.</p>
-                <div class="solution-grid">
-                    <div class="card text-center"><div class="text-2xl font-bold text-[#003F5C] mb-3">The Challenge</div><p class="font-semibold text-red-600">Inaccurate Location & GIS Data Gaps</p><p class="text-sm mt-2">Reliance on incomplete GIS data and caller descriptions leads to response delays, especially in rural areas, undermining the core function of NG911. [5]</p></div>
-                    <div class="card text-center bg-[#e6f0ff]"><div class="text-2xl font-bold text-[#003F5C] mb-3">The RapidSOS Solution</div><p class="font-semibold text-blue-600">Device-Based Location & Rich Data</p><p class="text-sm mt-2">Deliver precise, real-time GPS coordinates and additional data (health info, vehicle telematics) directly from the calling device, bypassing legacy location systems. [17, 18]</p></div>
-                    <div class="card text-center"><div class="text-2xl font-bold text-[#003F5C] mb-3">The Outcome</div><p class="font-semibold text-green-600">Faster, More Informed Response</p><p class="text-sm mt-2">Dramatically reduce response times, improve situational awareness for responders, and improve survival outcomes, as demonstrated in numerous save stories. [19, 20]</p></div>
-                    <div class="card text-center"><p class="font-semibold text-red-600">Dispatcher Overload & Burnout</p><p class="text-sm mt-2">High vacancy rates (145 statewide) and manual data entry increase stress, cognitive load, and the risk of errors, fueling a costly turnover cycle. [1, 9]</p></div>
-                    <div class="card text-center bg-[#e6f0ff]"><p class="font-semibold text-blue-600">A Unified, Automated Platform</p><p class="text-sm mt-2">Integrate data into a single screen and automate data entry via CAD integration, reducing manual tasks, eliminating screen-switching, and lowering cognitive load. [17, 21, 22]</p></div>
-                    <div class="card text-center"><p class="font-semibold text-green-600">Improved Efficiency & Staff Wellness</p><p class="text-sm mt-2">Decrease call handling times, support dispatcher focus and well-being, and directly combat the primary drivers of burnout, helping to reduce costly staff turnover.</p></div>
-                    <div class="card text-center"><p class="font-semibold text-red-600">Language Barriers & Missed Details</p><p class="text-sm mt-2">Using third-party translation services causes critical delays, while manual listening under pressure risks missing vital keywords in a chaotic call.</p></div>
-                    <div class="card text-center bg-[#e6f0ff]"><p class="font-semibold text-blue-600">Live Translation & AI Transcription</p><p class="text-sm mt-2">Provide instant, on-screen text translation and automatically transcribe calls, using AI to highlight keywords for immediate recognition and enhanced awareness. [17]</p></div>
-                    <div class="card text-center"><p class="font-semibold text-green-600">Equitable Access & Enhanced Safety</p><p class="text-sm mt-2">Serve all communities faster regardless of language, and ensure critical details are never missed, leading to safer and more effective resource allocation.</p></div>
+                <h2 class="text-3xl font-bold text-center text-[#003F5C] mb-8">The Path to a Safer Arkansas: The Role of an Intelligent Safety Platform</h2>
+                <p class="text-center text-gray-600 mb-8 max-w-3xl mx-auto">An intelligent safety platform like RapidSOS provides a unified data layer that directly addresses Arkansas's core challenges, enhancing the investment in NG911 and delivering immediate value to PSAPs and first responders.</p>
+                <div class="grid grid-cols-1 gap-4">
+                    <!-- Header Row -->
+                    <div class="hidden md:grid grid-cols-3 gap-4 text-center">
+                        <div class="text-2xl font-bold text-[#003F5C]">The Challenge</div>
+                        <div class="text-2xl font-bold text-[#003F5C]">The Solution</div>
+                        <div class="text-2xl font-bold text-[#003F5C]">The Outcome</div>
+                    </div>
+                    <!-- Row 1 -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="card text-center"><p class="font-semibold text-red-600">Inaccurate Location & Data Gaps</p><p class="text-sm mt-2 flex-grow">Reliance on incomplete GIS data and caller descriptions leads to response delays, especially in rural areas.</p></div>
+                        <div class="card text-center bg-[#e6f0ff]"><p class="font-semibold text-blue-600">Device-Based Location & Rich Data</p><p class="text-sm mt-2 flex-grow">Deliver precise, real-time GPS coordinates and additional data (health info, vehicle telematics) directly from the calling device.</p></div>
+                        <div class="card text-center"><p class="font-semibold text-green-600">Faster, More Informed Response</p><p class="text-sm mt-2 flex-grow">Reduce response times, improve situational awareness for responders, and improve survival outcomes.</p></div>
+                    </div>
+                     <!-- Row 2 -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="card text-center"><p class="font-semibold text-red-600">Dispatcher Overload & Burnout</p><p class="text-sm mt-2 flex-grow">High vacancy rates and manual data entry increase stress, cognitive load, and the risk of errors.</p></div>
+                        <div class="card text-center bg-[#e6f0ff]"><p class="font-semibold text-blue-600">A Unified, Automated Platform</p><p class="text-sm mt-2 flex-grow">Integrate data into a single screen and automate non-emergency call handling to reduce manual tasks and information overload.</p></div>
+                        <div class="card text-center"><p class="font-semibold text-green-600">Improved Efficiency & Staff Wellness</p><p class="text-sm mt-2 flex-grow">Decrease call handling times, support dispatcher focus and well-being, and reduce costly staff turnover.</p></div>
+                    </div>
+                     <!-- Row 3 -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="card text-center"><p class="font-semibold text-red-600">Language Barriers & Missed Details</p><p class="text-sm mt-2 flex-grow">Using third-party translation services causes delays, while manual listening risks missing critical keywords in a chaotic call.</p></div>
+                        <div class="card text-center bg-[#e6f0ff]"><p class="font-semibold text-blue-600">Live Translation & Transcription</p><p class="text-sm mt-2 flex-grow">Provide instant, on-screen translation for non-English speakers and automatically transcribe calls, highlighting keywords for immediate recognition.</p></div>
+                        <div class="card text-center"><p class="font-semibold text-green-600">Equitable Access & Enhanced Awareness</p><p class="text-sm mt-2 flex-grow">Serve all communities faster regardless of language, and ensure critical details are never missed, leading to better resource allocation.</p></div>
+                    </div>
                 </div>
             </section>
         </main>
 
         <footer class="text-center mt-16 pt-8 border-t border-gray-300">
-            <p class="text-gray-500">This analysis was compiled from public records including Arkansas 911 Board legislative reports, meeting minutes, strategic plans, and national emergency services research. It presents a strategic analysis for enhancing public safety in Arkansas by maximizing the return on the state's NG911 investment. All visualizations are rendered via HTML Canvas and do not use SVG or Mermaid JS.</p>
+            <p class="text-gray-500 text-sm">Data synthesized from public records and emergency services research reports. This infographic presents a strategic analysis for enhancing public safety in Arkansas. All visualizations are rendered via HTML Canvas and do not use SVG or Mermaid JS.</p>
         </footer>
 
     </div>
@@ -331,11 +340,12 @@
             pink: '#BC5090',
             red: '#FF6361',
             orange: '#FFA600',
-            gray: '#E0E0E0'
+            gray: '#cbd5e1'
         };
 
         const tooltipTitleCallback = (tooltipItems) => {
-            const item = tooltipItems;
+            const item = tooltipItems[0];
+            if (!item) return '';
             let label = item.chart.data.labels[item.dataIndex];
             if (Array.isArray(label)) {
                 return label.join(' ');
@@ -369,61 +379,50 @@
                     bodyFont: {
                         family: 'Inter',
                         size: 12
-                    }
+                    },
+                    padding: 10,
+                    cornerRadius: 5
                 }
             },
             scales: {
                 x: {
                     ticks: {
                         color: brilliantBlues.darkBlue,
-                        font: {
-                            family: 'Inter',
-                        }
+                        font: { family: 'Inter' }
                     },
-                    grid: {
-                        display: false
-                    }
+                    grid: { display: false }
                 },
                 y: {
                     ticks: {
                         color: brilliantBlues.darkBlue,
-                        font: {
-                            family: 'Inter',
-                        }
+                        font: { family: 'Inter' }
                     },
-                     grid: {
-                        color: '#E0E0E0'
-                    }
+                    grid: { color: '#E0E0E0' }
                 }
             }
         };
 
-        // Chart 1: ESInet Progress Doughnut Chart
         new Chart(document.getElementById('esinetProgressChart'), {
             type: 'doughnut',
             data: {
-                labels:,
+                labels: ['Connected', 'Not Connected'],
                 datasets: [{
-                    data: , 
-                    backgroundColor:,
+                    data: [85, 7], // 85 of 92 PSAPs
+                    backgroundColor: [brilliantBlues.midBlue, brilliantBlues.gray],
                     borderColor: '#FFFFFF',
                     borderWidth: 4,
                     hoverOffset: 4
                 }]
             },
             options: {
-             ...defaultChartOptions,
+                ...defaultChartOptions,
                 cutout: '75%',
                 scales: { x: { display: false }, y: { display: false } },
                 plugins: {
                     legend: { display: false },
-                    tooltip: { enabled: false },
+                    tooltip: { enabled: true },
                     title: {
-                        display: true,
-                        text: 'Source: AR 911 Board Reports [1, 23]',
-                        position: 'bottom',
-                        font: { size: 10 },
-                        color: '#999'
+                        display: false
                     }
                 },
                 animation: {
@@ -446,76 +445,64 @@
             }
         });
 
-        // Chart 2: i3 Readiness Bar Chart
         new Chart(document.getElementById('i3ReadinessChart'), {
             type: 'bar',
             data: {
-                labels:,],
-                datasets:,
-                    backgroundColor:,
-                    borderColor:,
-                    borderWidth: 2,
+                labels: [['ESInet', 'Connected'], ['i3 Ready']],
+                datasets: [{
+                    label: 'PSAP Readiness',
+                    data: [92, 35], 
+                    backgroundColor: [brilliantBlues.midBlue, brilliantBlues.orange],
+                    borderColor: [brilliantBlues.darkBlue, brilliantBlues.red],
+                    borderWidth: 1,
                     borderRadius: 5
                 }]
             },
             options: {
-             ...defaultChartOptions,
+                ...defaultChartOptions,
                 indexAxis: 'y',
                 scales: {
                     x: {
                         beginAtZero: true,
                         max: 100,
                         ticks: {
-                           callback: function(value) { return value + "%" }
+                            callback: function(value) { return value + "%" }
                         }
                     },
                     y: {
-                       ticks: {
-                           font: { size: 14 }
-                       }
+                        ticks: {
+                            font: { size: 14 }
+                        },
+                         grid: { display: false }
                     }
                 },
                 plugins: {
-                 ...defaultChartOptions.plugins,
-                    legend: { display: false },
-                    tooltip: {
-                        enabled: true,
-                        callbacks: {
-                         ...defaultChartOptions.plugins.tooltip.callbacks,
-                            label: function(context) {
-                                let label = context.dataset.label |
-| '';
-                                if (label) {
-                                    label += ': ';
-                                }
-                                if (context.parsed.x!== null) {
-                                    label += context.parsed.x.toFixed(1) + '%';
-                                }
-                                return label;
-                            },
-                            footer: (tooltipItems) => 'Source: AR 911 Board Mins, May 2024 [23]'
-                        }
-                    }
+                    ...defaultChartOptions.plugins,
+                    legend: { display: false }
                 }
             }
         });
         
-        // Chart 3: Response Time Bar Chart
         new Chart(document.getElementById('responseTimeChart'), {
             type: 'bar',
             data: {
-                labels:,
-                datasets:,
-                    backgroundColor:,
-                     borderRadius: 5
+                labels: ['Urban Centers', 'Rural Areas'],
+                datasets: [{
+                    label: 'Average Response Time',
+                    data: [8, 17],
+                    backgroundColor: [brilliantBlues.lightBlue, brilliantBlues.pink],
+                    borderRadius: 5
                 }]
             },
             options: {
-             ...defaultChartOptions,
-                 scales: {
+                ...defaultChartOptions,
+                scales: {
+                     x: {
+                        grid: { display: false }
+                    },
                     y: {
                         beginAtZero: true,
-                         title: {
+                        title: {
                             display: true,
                             text: 'Minutes',
                             color: brilliantBlues.darkBlue,
@@ -524,20 +511,11 @@
                     }
                 },
                 plugins: {
-                  ...defaultChartOptions.plugins,
-                    legend: { display: false },
-                    tooltip: {
-                        enabled: true,
-                        callbacks: {
-                         ...defaultChartOptions.plugins.tooltip.callbacks,
-                            footer: (tooltipItems) => 'Source: JAMA Surgery / HRSA Report [13, 24]'
-                        }
-                    }
+                    ...defaultChartOptions.plugins,
+                    legend: { display: false }
                 }
             }
         });
-
-
     </script>
 </body>
 </html>
